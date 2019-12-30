@@ -1,0 +1,6 @@
+redis:
+  key:
+    prefix:
+      deviceMac: "nbiot:deviceMac:"
+    expire:
+      deviceMac: 600 # 设置过期时间
