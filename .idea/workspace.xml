@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="59ef31ee-b24e-4e11-9218-6f33a7ec2296" name="Default" comment="增加了报警发送短信功能" />
+    <list default="true" id="59ef31ee-b24e-4e11-9218-6f33a7ec2296" name="Default" comment="增加了报警发送短信功能">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_47.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_17.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NBIoTResolution.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NBIoTResolution.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/dao/NBIoTDeviceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/dao/NBIoTDeviceMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/model/DeviceMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/model/DeviceMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/model/DeviceRelation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/model/DeviceRelation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/DataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/DataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/DeviceMessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/DeviceMessageDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/DeviceRelationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/DeviceRelationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/NbiotDeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/NbiotDeviceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/RedisMsgServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/RedisMsgServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/NBIoTResolution.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/dao/NBIoTDeviceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/dao/NBIoTDeviceMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/model/DeviceMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/model/DeviceMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/model/DeviceRelation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/model/DeviceRelation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/DataService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/DataService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/DeviceMessageDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/DeviceMessageDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/DeviceRelationDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/DeviceRelationDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/NbiotDeviceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/NbiotDeviceService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/RedisMsgServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/RedisMsgServiceImpl.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +75,8 @@
         <option value="rongshuai" />
       </list>
     </option>
-    <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -60,6 +86,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1VZ98qkDO5MrKh0Lw1cJPaqC2ZX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -70,6 +97,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15869786" />
     <property name="project.structure.side.proportion" value="0.3756178" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
@@ -406,6 +434,8 @@
       <workItem from="1577701976566" duration="12920000" />
       <workItem from="1577717448430" duration="9000" />
       <workItem from="1577752339139" duration="3035000" />
+      <workItem from="1577756388916" duration="15877000" />
+      <workItem from="1577925174141" duration="10257000" />
     </task>
     <task id="LOCAL-00001" summary="实现了设备入网功能">
       <created>1568879669714</created>
@@ -440,6 +470,19 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">

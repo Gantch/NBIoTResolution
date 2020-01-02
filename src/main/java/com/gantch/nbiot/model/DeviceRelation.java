@@ -1,14 +1,11 @@
 package com.gantch.nbiot.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Data
-@NoArgsConstructor
 public class DeviceRelation {
 
     private String id;
@@ -37,19 +34,22 @@ public class DeviceRelation {
 
     private String location;
 
-    @JsonFormat(pattern = "YYYY-MM-ddHH:mm:ss",timezone = "GMT+8")
-    private Date createTime;
+    private Timestamp createTime;
 
-
-    public DeviceRelation(String deviceId, String deviceName, String deviceNickName, Integer tenantId, Integer customerId, BigDecimal latitude, BigDecimal longitude, String district, String location) {
-        this.id=deviceId;
-        this.name=deviceName;
-        this.nickName=deviceNickName;
-        this.tenantId=tenantId;
-        this.customerId=customerId;
-        this.latitude=latitude;
-        this.longitude=longitude;
-        this.district=district;
-        this.location=location;
+    public DeviceRelation(String id, String mac, String name, String nickName, Integer tenantId, Integer customerId, String deviceType, String model, String deviceGroupId, BigDecimal latitude, BigDecimal longitude, String district, String location, Timestamp createTime) {
+        this.id = id;
+        this.mac = mac;
+        this.name = name;
+        this.nickName = nickName;
+        this.tenantId = tenantId;
+        this.customerId = customerId;
+        this.deviceType = deviceType;
+        this.model = model;
+        this.deviceGroupId = deviceGroupId;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.district = district;
+        this.location = location;
+        this.createTime = createTime;
     }
 }

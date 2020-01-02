@@ -15,18 +15,8 @@ public class DeviceMessageDao {
     @Autowired
     private DeviceMessageMapper deviceMessageMapper;
 
-
-
-
     public List<DeviceMessage> getDeviceMessageById(String deviceId){//根据设备的id查找设备对应的所有报警电话
         return deviceMessageMapper.getDeviceMessageById(deviceId);
     }
-
-
-
-
-
-
-
 
 }

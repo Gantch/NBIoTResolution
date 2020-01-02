@@ -12,9 +12,7 @@ public class DeviceRelationDao {
     private DeviceRelationMapper DeviceRelationMapper;
 
     public DeviceRelation getDeviceRelation(String mac){
-
         return DeviceRelationMapper.selectDeviceRelationByMac(mac) ;
     }
-
 
 }

@@ -15,6 +15,7 @@ import com.gantch.nbiot.model.DeviceRelation;
 import com.gantch.nbiot.model.NbiotAlarmLog;
 import com.gantch.nbiot.model.NbiotDevice;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.apache.commons.codec.binary.Hex;
 
 import java.math.BigDecimal;
@@ -40,7 +41,8 @@ public class DataService {
           device.setModel("BC28");
           Timestamp createTime = new Timestamp(System.currentTimeMillis());
           device.setCreateTime(createTime);
-          if (nbiotDeviceService.getNbiotDeviceByMac(mac)<1){//检查设备创建情况，如未创建就在nbiot_device中创建
+          System.out.println(mac);
+          if (nbiotDeviceService.getNbiotDeviceByMac(mac) ==null){//检查设备创建情况，如未创建就在nbiot_device中创建
               nbiotDeviceService.addNbiotDevice(device);
           }
           switch (deviceType){
@@ -51,7 +53,6 @@ public class DataService {
                       isSmoking = true;
                       DeviceRelation relation= relationDao.getDeviceRelation(device.getMac());
                       if (relation !=null){//如果已有绑定关系
-                          System.out.println("mac为"+relation.getMac());
                           System.out.println("设备已有绑定关系");
                           String deviceId = relation.getId();
                           String deviceName = relation.getName();
@@ -71,60 +72,77 @@ public class DataService {
                           System.out.println("当前设备的经度为:" + longitude);
                           System.out.println("当前设备的详细地址为:"+district);
                           System.out.println("当前时间戳为:" + createTime.toString());
-                          NbiotAlarmLog nbiotAlarmLog = new NbiotAlarmLog(device.getDeviceId(),createTime,deviceName,latitude,longitude,alarmType,tenantId);
-                          System.out.println(nbiotAlarmLogDao.addNbiotAlarmLog(nbiotAlarmLog));
-                             try{
-                                  List<DeviceMessage> deviceMessages = deviceMessageDao.getDeviceMessageById(deviceId);
-                                  System.out.println(deviceMessages.toString());
-                                  for (DeviceMessage deviceMessage : deviceMessages){
-                                        String phoneNumber = deviceMessage.getPhoneNumber();
-//                                        String phoneNumber = "13558695773";
-                                    if (deviceMessage.getStatus().equals(1)){//普通报警
-                                        if (deviceNickName == null || deviceNickName.length()==0 ||deviceName.equals("")){
-                                            System.out.println("出现报警，向：" + phoneNumber + "发送短信");
-                                            System.out.println(deviceName +"," + location +"," + alarmType +"," + phoneNumber);
-                                            sendMs(deviceName,location,alarmType,phoneNumber);//向对应手机号发送报警短信
-                                            sendVoice(deviceName,phoneNumber);
-                                        }else{
-                                            System.out.println("出现报警，向：" + phoneNumber + "发送短信");
-                                            System.out.println(deviceNickName +"," + location +"," + alarmType +"," + phoneNumber);
-                                            sendMs(deviceNickName,location,alarmType,phoneNumber);//向对应手机号发送报警短信
-                                            sendVoice(deviceNickName,phoneNumber);
+                          if (deviceName.equals("smoke_detector")){
+                              NbiotAlarmLog nbiotAlarmLog = new NbiotAlarmLog(deviceId,createTime,deviceNickName,latitude,longitude,alarmType,tenantId);
+                              nbiotAlarmLogDao.addNbiotAlarmLog(nbiotAlarmLog);
+                          }else {
+                              NbiotAlarmLog nbiotAlarmLog = new NbiotAlarmLog(deviceId, createTime, deviceName, latitude, longitude, alarmType, tenantId);
+                              nbiotAlarmLogDao.addNbiotAlarmLog(nbiotAlarmLog);
+                          }
+                          try{
+                              List<DeviceMessage> deviceMessages = deviceMessageDao.getDeviceMessageById(deviceId);
+                              System.out.println("报警手机号:"+deviceMessages);
+                              for (DeviceMessage deviceMessage : deviceMessages){
+                                 String phoneNumber = deviceMessage.getPhoneNumber();
+                                 switch (deviceMessage.getStatus()){
+                                     case 1:
+                                         //普通报警
+                                         System.out.println("报警方式:普通报警");
+                                         if (deviceNickName == null || deviceNickName.length()==0 ||deviceName.equals("")){
+                                             System.out.println("出现报警，向：" + phoneNumber + "发送短信");
+                                             System.out.println(deviceName +"," + location +"," + alarmType +"," + phoneNumber);
+                                             sendMs(deviceName,location,alarmType,phoneNumber);//向对应手机号发送报警短信
+                                             sendVoice(deviceName,phoneNumber);
+                                         }else{
+                                             System.out.println("出现报警，向：" + phoneNumber + "发送短信");
+                                             System.out.println(deviceNickName +"," + location +"," + alarmType +"," + phoneNumber);
+                                             sendMs(deviceNickName,location,alarmType,phoneNumber);//向对应手机号发送报警短信
+                                             sendVoice(deviceNickName,phoneNumber);
+                                         }
+                                         break;
+                                     case 2:
+                                         //app状态栏推送报警
+                                         break;
+                                     case 3:
+                                         //周期性报警 10分钟为一周期
+                                         System.out.println("报警方式:周期报警");
+                                         if (msgService.verifyCycleAlarmMessage(mac+phoneNumber,"alarmTypeThree")==0){
+                                             Timestamp timestamp =new Timestamp(System.currentTimeMillis());
+                                             String time=timestamp.toString();
+                                             System.out.println("出现报警类型为周期性报警：10分钟为一周期"+"设备mac"+mac);
+                                             System.out.println("当前时间为:"+time);
+                                             sendMs(deviceNickName,location,alarmType,phoneNumber);
+                                             sendVoice(deviceNickName,phoneNumber);
+                                             msgService.saveCycleAlarmMessage(mac+phoneNumber);
+                                         }
+                                         break;
+                                     default:
+                                         System.out.println("未找到对应报警方式");
+                                         break;
                                         }
-                                    }
-                                    if (deviceMessage.getStatus().equals(3)){//周期性报警 10分钟为一周期
-                                        if (msgService.verifyCycleAlarmMessage(mac,"233")==0){
-                                            Timestamp timestamp =new Timestamp(System.currentTimeMillis());
-                                            String time=timestamp.toString();
-                                            System.out.println("出现报警类型为周期性报警：10分钟为一周期"+"设备mac"+mac);
-                                            System.out.println("当前时间为:"+time);
-                                            sendMs(deviceName,location,alarmType,phoneNumber);
-                                            sendVoice(deviceName,phoneNumber);
-                                            msgService.saveCycleAlarmMessage(mac);
-                                        }
-                                    }
+
                                   }
                               }catch (Exception e){
                                   System.out.println("当前尚无设备对应的报警手机号"+e);
                               }
-                          }else{
-    //                          没有绑定关系
-                        System.out.println("设备没有绑定关系");
-                        NbiotDevice nbiotDevice = nbiotDeviceService.getNbiotDevice(mac);
-                        String deviceName = nbiotDevice.getName();
-                        String deviceId = nbiotDevice.getDeviceId();
-                        BigDecimal latitude = null;//没有绑定关系 经纬度为空
-                        BigDecimal longitude = null;
-                        String alarmType = "烟雾报警";
-                        Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-                        System.out.println("当前设备的名字为:" + deviceName);
-                        System.out.println("当前设备的Id为:" + deviceId);
-                        System.out.println("当前设备的纬度为:" + latitude);
-                        System.out.println("当前设备的经度为:" + longitude);
-                        System.out.println("当前时间戳为:" + currentTime.toString());
-                        System.out.println("烟雾报警");
-                        NbiotAlarmLog nbiotAlarmLog = new NbiotAlarmLog(deviceId,currentTime,deviceName,latitude,longitude,alarmType,null);
-                        nbiotAlarmLogDao.addNbiotAlarmLog(nbiotAlarmLog);
+                          }else{//                          没有绑定关系
+
+                            System.out.println("设备没有绑定关系");
+                            NbiotDevice nbiotDevice = nbiotDeviceService.getNbiotDevice(mac);
+                            String deviceName = nbiotDevice.getName();
+                            String deviceId = nbiotDevice.getDeviceId();
+                            BigDecimal latitude = null;//没有绑定关系 经纬度为空
+                            BigDecimal longitude = null;
+                            String alarmType = "烟雾报警";
+                            Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+                            System.out.println("当前设备的名字为:" + deviceName);
+                            System.out.println("当前设备的Id为:" + deviceId);
+                            System.out.println("当前设备的纬度为:" + latitude);
+                            System.out.println("当前设备的经度为:" + longitude);
+                            System.out.println("当前时间戳为:" + currentTime.toString());
+                            System.out.println("烟雾报警");
+                            NbiotAlarmLog nbiotAlarmLog = new NbiotAlarmLog(device.getDeviceId(),currentTime,deviceName,latitude,longitude,alarmType,null);
+                            nbiotAlarmLogDao.addNbiotAlarmLog(nbiotAlarmLog);
                           }
                       }else{ isSmoking = false; }
                       if(isSmoking){
@@ -134,7 +152,12 @@ public class DataService {
                               status = "low";
                           }
                       }
-                break;
+                  JsonObject jsonObject = new JsonObject();
+                  jsonObject.addProperty("isSmoking",isSmoking);
+                  jsonObject.addProperty("status",status);
+                  jsonObject.addProperty("online",1D);
+                  System.out.println(jsonObject.toString());
+                  break;
               default:
                 System.out.println("无匹配设备");
                 break;
@@ -165,7 +188,7 @@ public class DataService {
         request.setAction("SendSms");
         request.putQueryParameter("RegionId", "cn-hangzhou");
         request.putQueryParameter("PhoneNumbers", phoneNumber);
-        request.putQueryParameter("SignName", "云消防");
+        request.putQueryParameter("SignName", "天慧云谷");
         request.putQueryParameter("TemplateCode", "SMS_181505951");
         request.putQueryParameter("TemplateParam", "{\"deviceName\":\"" +deviceName+ "\", \"location\":\"" + location + "\" ,\"alarmType\":\"" + alarmType + "\"}");
         try {
@@ -180,7 +203,7 @@ public class DataService {
 
     public void sendVoice(String deviceName,String phoneNumber) throws ClientException {//发送语音报警通知
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4FgntVB75X2BoJQR5qUr", "UIlRGb6N2eX1boNTuFxMhQoYKQEzhz");
-        profile.addEndpoint("cn-hangzhou", "cn-hangzhou","Dyvmsapi","dyvmsapi.aliyuncs.com");
+        DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou","Dyvmsapi","dyvmsapi.aliyuncs.com");
         IAcsClient client = new DefaultAcsClient(profile);
 
         SingleCallByTtsRequest request = new SingleCallByTtsRequest();

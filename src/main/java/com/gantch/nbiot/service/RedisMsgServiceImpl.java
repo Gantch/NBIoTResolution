@@ -17,10 +17,11 @@ public class RedisMsgServiceImpl implements RedisMsgService {
 
 
     public boolean saveCycleAlarmMessage(String mac){//存储周期时间
-        redisService.set(REDIS_KEY_PREFIX_DEVICE_MAC+mac,"233");//存储Key-mac Value-authCode?=233
+        redisService.set(REDIS_KEY_PREFIX_DEVICE_MAC+mac,"alarmTypeThree");//存储Key-mac+phoneNumber Value-authCode=alarmTypeThree
         redisService.expire(REDIS_KEY_PREFIX_DEVICE_MAC+mac,CYCLE_EXPIRE_SECONDS);//到期时间
         return true;
     }
+
 
     //对周期报警信息进行校验
     public Integer verifyCycleAlarmMessage(String mac,String authCode){
@@ -31,4 +32,6 @@ public class RedisMsgServiceImpl implements RedisMsgService {
         }
         return 0;//有数据
     }
+
+
 }

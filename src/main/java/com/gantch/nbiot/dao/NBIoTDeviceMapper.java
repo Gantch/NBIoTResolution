@@ -16,8 +16,8 @@ public interface NBIoTDeviceMapper {
     @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
     int addNbiotDevice(NbiotDevice nbiotDevice);
 
-    @Select("SELECT auto_increment FROM information_schema.tables WHERE table_schema='BUPT_IOT' and table_name='nbiotdevice'")
-    int getNbiotDeviceNumber();
+//    @Select("SELECT auto_increment FROM information_schema.tables WHERE table_schema='BUPT_IOT' and table_name='nbiotdevice'")
+//    int getNbiotDeviceNumber();
 
     @Select("SELECT * FROM nbiot_device where mac = #{mac}")
     Integer getNbiotDeviceBymac(String mac);

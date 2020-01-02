@@ -8,10 +8,12 @@ spring:
     active: dev
 
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/nbiot?serverTimezone=GMT&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/nbiot?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+#    url: jdbc:mysql://118.190.202.148:3306/BUPT_IOT?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
+#    password: Gantch815
 
 mybatis:
   configuration:
