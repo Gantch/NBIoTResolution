@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59ef31ee-b24e-4e11-9218-6f33a7ec2296" name="Default" comment="增加了报警发送短信功能">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_47.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_17.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NBIoTResolution.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NBIoTResolution.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/dao/NBIoTDeviceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/dao/NBIoTDeviceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/model/DeviceMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/model/DeviceMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/model/DeviceRelation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/model/DeviceRelation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/DataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/DataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/DeviceMessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/DeviceMessageDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/DeviceRelationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/DeviceRelationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/NbiotDeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/NbiotDeviceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/RedisMsgServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gantch/nbiot/service/RedisMsgServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/NBIoTResolution.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/dao/NBIoTDeviceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/dao/NBIoTDeviceMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/model/DeviceMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/model/DeviceMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/model/DeviceRelation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/model/DeviceRelation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/DataService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/DataService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/DeviceMessageDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/DeviceMessageDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/DeviceRelationDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/DeviceRelationDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/NbiotDeviceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/NbiotDeviceService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/RedisMsgServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gantch/nbiot/service/RedisMsgServiceImpl.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -435,7 +411,7 @@
       <workItem from="1577717448430" duration="9000" />
       <workItem from="1577752339139" duration="3035000" />
       <workItem from="1577756388916" duration="15877000" />
-      <workItem from="1577925174141" duration="10257000" />
+      <workItem from="1577925174141" duration="10260000" />
     </task>
     <task id="LOCAL-00001" summary="实现了设备入网功能">
       <created>1568879669714</created>
